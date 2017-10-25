@@ -1,0 +1,38 @@
+---
+server:
+    port: 8080
+    tomcat:
+        uri-encoding: UTF-8
+
+spring:
+  application:
+    name: ChatRoom
+  http:
+      multipart:
+        max-file-size: 600Mb
+        max-request-size: 1000Mb
+      encoding:
+        force: true
+        charset: UTF-8
+        enabled: true
+  datasource:
+    url: jdbc:log4jdbc:mysql://localhost:3306/osmcs?characterEncoding=utf8&useSSL=true
+    username: root
+    password: root
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+  redis:
+          host: localhost
+          port: 6379
+          # Redis服务器连接密码（默认为空）
+          password:
+          # 连接池最大连接数（使用负值表示没有限制）
+          pool:
+            max-active: 8
+          # 连接池最大阻塞等待时间（使用负值表示没有限制）
+            max-wait: -1
+          # 连接池中的最大空闲连接
+            max-idle: 8
+          # 连接池中的最小空闲连接
+            min-idle: 0
+          # 连接超时时间（毫秒）
+         # timeout: 0
