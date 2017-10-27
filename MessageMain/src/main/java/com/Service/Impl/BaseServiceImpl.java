@@ -1,5 +1,6 @@
 package com.Service.Impl;
 
+import com.Util.RMQSender;
 import com.Util.RedisUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,4 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BaseServiceImpl {
     @Autowired
     RedisUtils redisUtils;
+
+    @Autowired
+    RMQSender rmqSender;
 }

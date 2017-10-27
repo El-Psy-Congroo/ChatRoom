@@ -2,6 +2,7 @@ package com.Service.Impl;
 
 import com.alibaba.fastjson.JSON;
 import com.model.ReceiveMessage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.websocket.Session;
@@ -13,7 +14,6 @@ import java.util.*;
  */
 @Service
 public class ChatServiceImpl extends BaseServiceImpl {
-
     private static List<String> uuidList=new ArrayList<String>();
     private static Map<String,Session> sessionMap=new HashMap<String, Session>();
 
@@ -35,7 +35,11 @@ public class ChatServiceImpl extends BaseServiceImpl {
         Session receiveSession= sessionMap.get(receiveMessage.getRecipients());
         if (receiveSession!=null){
             try {
-                receiveSession.getBasicRemote().sendText(loginName+":"+receiveMessage.getMessage()); //回复用户
+                String sendMessage=receiveMessage.getMessage();
+                Map<String,Object> sendMap=new HashMap<String, Object>();
+                sendMap.put("message",sendMessage);
+                rmqSender.sendMessage(sendMap);
+                receiveSession.getBasicRemote().sendText(loginName+":"+sendMessage); //回复用户
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }

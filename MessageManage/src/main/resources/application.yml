@@ -21,18 +21,16 @@ spring:
     password: root
     driver-class-name: net.sf.log4jdbc.DriverSpy
   redis:
-          host: localhost
-          port: 6379
-          # Redis�������������루Ĭ��Ϊ�գ�
-          password:
-          # ���ӳ������������ʹ�ø�ֵ��ʾû�����ƣ�
-          pool:
-            max-active: 8
-          # ���ӳ���������ȴ�ʱ�䣨ʹ�ø�ֵ��ʾû�����ƣ�
-            max-wait: -1
-          # ���ӳ��е�����������
-            max-idle: 8
-          # ���ӳ��е���С��������
-            min-idle: 0
-          # ���ӳ�ʱʱ�䣨���룩
-         # timeout: 0
+    host: localhost
+    port: 6379
+    password:
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+  rabbitmq:
+      host: localhost
+      port: 5672
+      username: guest
+      password: guest
